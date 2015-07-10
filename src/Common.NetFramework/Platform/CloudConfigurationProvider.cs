@@ -169,4 +169,46 @@ namespace Microsoft.WindowsAzure.Common.Platform
             return setting;
         }
     }
+    
+    private static string GetMachineConfigSetting1(string name)
+        {
+            string setting = null;
+            Configuration machine = ConfigurationManager.OpenMachineConfiguration();
+            if (machine != null)
+            {
+                KeyValueConfigurationElement appSetting = machine.AppSettings.Settings[name];
+                if (appSetting != null)
+                {
+                    setting = appSetting.Value;
+                    if (string.IsNullOrEmpty(setting) && IsConnectionStringSetting(name))
+                    {
+                        ConnectionStringSettings connectionSettings = machine.ConnectionStrings.ConnectionStrings[name];
+                        if (connectionSettings != null)
+                        {
+                            setting = connectionSettings.ConnectionString;
+                        }
+                    }
+                }
+            }
+            Tracing.Configuration("MachineConfig", name, setting);
+            return setting;
+        }
+
+        public static string GetCloudConfigSetting2(string name)
+        {
+            if (_serviceRuntime == null)
+            {
+                _serviceRuntime = new ServiceRuntimeReference();
+            }
+
+            string setting = null;
+            if (_serviceRuntime != null)
+            {
+                setting = _serviceRuntime.GetSetting(name);
+            }
+
+            Tracing.Configuration("CloudConfig", name, setting);
+            return setting;
+        }
+    }
 }
