@@ -7,6 +7,14 @@
   - Infrastructure
   - Media Services Management
   - Scheduler Client & Management
+  -  Configuration Manager
+- Management Libraries
+  - Compute
+    - Virtual Machines
+    - Hosted Services
+  - Infrastructure
+  - Media Services Management
+  - Scheduler Client & Management
   - Storage
   - Network
   - Web Sites
