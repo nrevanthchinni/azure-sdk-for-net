@@ -1,4 +1,6 @@
 # Microsoft Azure SDK for .NET
+# Microsoft Azure SDK for .NET
+# Microsoft Azure SDK for .NET
 
 The Microsoft Azure SDK for .NET allows you to build applications 
 # Microsoft Azure SDK for .NET
